@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CyberAngel</title>
 <script>window.__resources={"https://unpkg.com/react@18.3.1/umd/react.production.min.js":"vendor/react.production.min.js","https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js":"vendor/react-dom.production.min.js"};</script>
 <script src="./support.js"></script>
@@ -23,10 +23,10 @@ a{color:#092B57}a:hover{color:#1d4f8f}
 button:focus-visible,a:focus-visible{outline:2px solid #092B57;outline-offset:2px}
 </style>
 </helmet>
-<div style="max-width:440px;margin:0 auto;min-height:100vh;background:#f2f4f7;display:flex;flex-direction:column;position:relative">
+<div style="max-width:440px;margin:0 auto;min-height:100vh;background:#f2f4f7;display:flex;flex-direction:column;position:relative;padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)">
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<div data-screen-label="Home" style="display:flex;flex-direction:column;flex:1;padding-bottom:100px;zoom:{{ zoom }}">
+<div data-screen-label="Home" style="display:flex;flex-direction:column;flex:1;padding-bottom:calc(100px + env(safe-area-inset-bottom));zoom:{{ zoom }}">
   <div style="padding:22px 20px 0;display:flex;align-items:center;gap:8px">
     <img src="cyberangel-logo-navy.png" alt="" style="height:19px;width:auto;display:block">
     <span style="font-weight:800;font-size:19px;color:#092B57;letter-spacing:-0.02em">CyberAngel</span>
@@ -58,7 +58,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #092B57;outline-offset:2p
 </sc-if>
 
 <sc-if value="{{ isReport }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Report" style="display:flex;flex-direction:column;flex:1;padding-bottom:100px;zoom:{{ zoom }}">
+<div data-screen-label="Report" style="display:flex;flex-direction:column;flex:1;padding-bottom:calc(100px + env(safe-area-inset-bottom));zoom:{{ zoom }}">
   <div style="padding:22px 20px 0;display:flex;align-items:center;gap:8px">
     <img src="cyberangel-logo-navy.png" alt="" style="height:19px;width:auto;display:block">
     <span style="font-weight:800;font-size:19px;color:#092B57;letter-spacing:-0.02em">CyberAngel</span>
@@ -99,7 +99,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #092B57;outline-offset:2p
 </sc-if>
 
 <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
-<div data-screen-label="Settings" style="display:flex;flex-direction:column;flex:1;padding-bottom:100px;zoom:{{ zoom }}">
+<div data-screen-label="Settings" style="display:flex;flex-direction:column;flex:1;padding-bottom:calc(100px + env(safe-area-inset-bottom));zoom:{{ zoom }}">
   <div style="padding:22px 20px 0;display:flex;align-items:center;gap:8px">
     <img src="cyberangel-logo-navy.png" alt="" style="height:19px;width:auto;display:block">
     <span style="font-weight:800;font-size:19px;color:#092B57;letter-spacing:-0.02em">CyberAngel</span>
@@ -218,7 +218,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #092B57;outline-offset:2p
       </sc-for>
     </div>
   </div>
-  <div style="position:fixed;bottom:0;left:50%;width:min(440px,100%);transform:translate(-50%,{{ panelY }});transition:transform .35s cubic-bezier(.2,.8,.2,1);padding:0 12px 12px;z-index:5">
+  <div style="position:fixed;bottom:0;left:50%;width:min(440px,100%);transform:translate(-50%,{{ panelY }});transition:transform .35s cubic-bezier(.2,.8,.2,1);padding:0 12px calc(12px + env(safe-area-inset-bottom));z-index:5">
     <div style="background:#fff;border-radius:26px;padding:20px 20px 16px;box-shadow:0 -6px 30px rgba(9,43,87,.16)">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
         <span style="width:30px;height:30px;border-radius:99px;background:{{ fb.iconBg }};color:{{ fb.iconFg }};display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px">{{ fb.glyph }}</span>
@@ -266,7 +266,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #092B57;outline-offset:2p
 </sc-if>
 
 <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
-<nav style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 12px 14px;background:#fff;border-top:1px solid #eef0f3;z-index:4">
+<nav style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(440px,100%);display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 12px calc(14px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #eef0f3;z-index:4">
   <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
     <button onClick="{{ t.go }}" aria-current="{{ t.current }}" style="all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 0;min-height:44px;border-radius:14px;background:{{ t.bg }};color:{{ t.fg }};transition:background .15s" style-hover="background:{{ t.hoverBg }}">
       <sc-if value="{{ t.isGame }}" hint-placeholder-val="{{ false }}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"></path><path d="M17.3 5H6.7a4 4 0 0 0-4 3.6L2 15.2A3 3 0 0 0 5 18.5c1 0 1.9-.5 2.4-1.3L8.5 16h7l1.1 1.2a3 3 0 0 0 5.4-2l-.7-6.6A4 4 0 0 0 17.3 5z"></path></svg></sc-if>
@@ -280,7 +280,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #092B57;outline-offset:2p
 
 <sc-if value="{{ hasDialog }}" hint-placeholder-val="{{ false }}">
 <div onClick="{{ closeDialog }}" style="position:fixed;inset:0;z-index:10;background:rgba(0,0,0,.45);display:flex;align-items:flex-end;justify-content:center">
-  <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="width:min(440px,100%);background:#fff;border-radius:28px 28px 0 0;padding:28px 22px 22px">
+  <div onClick="{{ stop }}" role="dialog" aria-modal="true" style="width:min(440px,100%);background:#fff;border-radius:28px 28px 0 0;padding:28px 22px calc(22px + env(safe-area-inset-bottom))">
     <div style="font-size:20px;font-weight:800;margin-bottom:10px">{{ dlg.title }}</div>
     <div style="font-size:15px;line-height:1.6;color:#4e5968;margin-bottom:22px">{{ dlg.body }}</div>
     <div style="display:flex;gap:8px">
